@@ -1,0 +1,41 @@
+﻿@model MVCDemo.Models.UserModel
+
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Register User</h2>
+
+@using (Html.BeginForm("Create", "User", FormMethod.Post))
+{
+    <div>
+        @Html.LabelFor(model => model.UserName)
+        @Html.TextBoxFor(model => model.UserName, new { @class = "", placeholder = "Enter User Name", style = "margin-bottom:5px;" })
+        @Html.ValidationMessageFor(model => model.UserName)
+        <br />
+
+        @Html.LabelFor(model => model.Mobile)
+        @Html.TextBoxFor(model => model.Mobile, new { @class = "", placeholder = "Enter Mobile Number", style = "margin-bottom:5px;" })
+        @Html.ValidationMessageFor(model => model.Mobile)
+        <br />
+
+        @Html.LabelFor(model => model.Email)
+        @Html.TextBoxFor(model => model.Email, new { @class = "", placeholder = "Enter Email", style = "margin-bottom:5px;" })
+        @Html.ValidationMessageFor(model => model.Email)
+        <br />
+
+        @Html.LabelFor(model => model.Password)
+        @Html.PasswordFor(model => model.Password, new { @class = "", placeholder = "Enter Password", style = "margin-bottom:5px;" })
+        @Html.ValidationMessageFor(model => model.Password)
+        <br />
+
+        <label>Male</label>
+        @Html.RadioButtonFor(model => model.Gender, "Male")
+        <label>Female</label>
+        @Html.RadioButtonFor(model => model.Gender, "Female")
+
+        <input type="submit" value="Register" />
+
+    </div>
+}

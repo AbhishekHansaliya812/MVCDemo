@@ -1,0 +1,41 @@
+﻿@model IEnumerable<MVCDemo.Product>
+@{
+    ViewBag.Title = "Product";
+    WebGrid webGrid = new WebGrid(source: Model);
+}
+
+<h2>Product</h2>
+
+
+@webGrid.GetHtml(
+    htmlAttributes: new { @id = "WebGrid", @class = "Grid"},
+    columns: webGrid.Columns(
+        webGrid.Column("ProductId", "ProductId"),
+        webGrid.Column("ProductName", "Product Name"),
+        webGrid.Column("CategoryId", "Category Id")))
+
+
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Product Id</th>
+            <th>Product Name</th>
+            <th>Category Id</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.ProductId</td>
+                <td>@item.ProductName</td>
+                <td>@item.CategoryId</td>
+                <td>
+                    <a href="" class="btn-default">Edit</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
